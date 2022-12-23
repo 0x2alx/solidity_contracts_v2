@@ -42,6 +42,7 @@ Note that the full deployment tutorial starts with deploying to Goerli testnet. 
 3. [Test contract/minting](#3-test-contractminting)
 
 #### [Interacting with your Contract]()
+*This section is important in order to understand how the contract works and how to use the various features.*
 1. [Minting info]()
 2. [Access Control/Delegation]()
 3. [Configure metadata]()
