@@ -183,22 +183,29 @@ Now that our contract is deployed and verified, let's interact with it. This is 
 
 ### Interacting with your Contract
 
+
 #### Smart Contracts General Info
 What is a smart contract anyway? 
 Simply put, a smart contract is a program (written in solidity language), stored on the blockchain. This program is stored at a given address (called the contract or collection address) created at the moment of the contract deployment on the blockchain.
 The program contains variables and functions (procedures). Once a contract is deployed on the blockchain, we can interact with it, aka read and modify its variables and call its functions. 
+
 A DAPP (Decentralized APP) is simply a web2 website with code allowing it to interact with the blockchain and call the functions on a given contract. It serves as the GUI for interacting a contract. So when an NFT project deploys a smart contract, they will typically create a DAPP that will allow its community to mint the NFTs. The DAPP simply sends calls to the mint function on the smart contract, on behalf of the user who then approves those calls/interactions in their wallet (e.g. Metamask).
 
-In this tutorial, we are not creating any DAPPs. That subject is a more complex subject and the GhostyERC721Ctr contract only has one mint function reseved to the owner/deployer of the contract. As mentioned, DAPPs are simply user interfaces to interact with a smart contract, but there are other ways to do it. The easiest is using etherscan directly. When we deploy and verify our smart contract, etherscan gives us access to its variables and functions. We can simply call the contract functions (like mint), from etherscan itself, without any DAPPs.
+This documentation does not cover DAPP creation. That subject is a more complex subject and the GhostyERC721Ctr contract only has one mint function reseved to the owner/deployer of the contract. As mentioned, DAPPs are simply user interfaces to interact with a smart contract, but there are other ways to do that. The easiest is using etherscan directly. When we deploy and verify our smart contract, etherscan gives us access to its variables and functions. We can simply call the contract functions (like mint), from etherscan itself, without any DAPPs.
+
+
 #### Minting info
 
 As mentioned this contract has only one minting function called **ownerMints**. This function can only be used/called by the owner/creator of the contract, and his chosen delegates (see next section for more info on delegates).
 
 The **ownerMints** function takes two parameters (arguments/variables). In other words, when we call this mint function, we need to give it two pieces of information, namely the **quantity** of NFTs we would like to mint, and the **recipients** of those NFTs aka the address(es) where we want to send those NFTs. 
+
 This mint function, can be used two ways; **Minting to a SINGLE wallet** or doing an **Airdrop to MULTIPLE wallets** 
+
 
 ##### Minting to a SINGLE wallet
 Use this method to mint one or multiple NFTs to a ***SINGLE*** wallet (that you own). In order to do this, you enter the **quantity** you want (number of NFTs) and for **recipients**, you put one of your OWN wallet \[addresses\] (DO NOT PUT THE CONTRACT ADDRESS). This could be the same address you used to deploy the contract, or another one that you own. This is basically the address where all the (**quantity**) NFTs will be sent once minted.
+
 **Make sure that the \[address\] is between square brackets, this is IMPORTANT! (see example screenshot)**
 
 * *Of course, this function will fail if you are not connected to etherscan with an authorized address (either the owner/creator or a delegate address).*
