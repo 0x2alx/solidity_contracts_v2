@@ -24,24 +24,23 @@ The contract was built by combining mutliple contracts and features from various
 * **Possibility of locking up the collection (so no more minting can be done)**
 * **Supports batch transfers**
 
-### Deployment Steps
-Note that the full deployment tutorial starts with deploying to Goerli testnet. If you want to deploy to mainnet directly (I recommend deploying to testnet at least once), please skip directly to the **Deploying on Mainnet** section.
+### Table of Contents
+Note that the full deployment tutorial starts with deploying to Goerli testnet. If you want to deploy to mainnet directly (I recommend deploying to testnet at least once), please skip directly to the **[Deploying on Mainnet](#deploying-on-mainnet-1)** section.
 
 *Note these steps were all done on desktop Metamask using Chrome. That being said, they should work on any desktop browser.*
 
-#### Deploying on Goerli testnet
-1. Enable Test Networks in your metamask
-2. Get Goerli testnet ETH
-3. Setup RemixIDE
-4. Deploy to Goerli testnet
-5. Test contract/minting on Goerli testnet
+#### [Deploying on Goerli testnet](#deploying-on-goerli-testnet-1)
+1. [Enable Test Networks in your metamask](#1-enable-test-networks-in-your-metamask)
+2. [Get Goerli testnet ETH](#2-get-goerli-testnet-eth)
+3. [Setup RemixIDE](#3-setup-remixide)
+4. [Deploy to Goerli testnet](#4-deploy-to-goerli-testnet)
+5. [Test contract/minting on Goerli testnet](#5-test-contractminting-on-goerli-testnet)
 
-#### Deploying on Mainnet
-1. Setup RemixIDE
-2. Deploy to Mainnet
-3. Test contract/minting
-4. Configure your contract
-5. Configure your metadata
+#### [Deploying on Mainnet](#deploying-on-mainnet-1)
+1. [Setup RemixIDE](#1-setup-remixide)
+2. [Deploy to Mainnet](#2-deploy-to-mainnet)
+3. [Test contract/minting](#3-test-contractminting)
+
 
 #### Deploying on Goerli testnet
 ##### 1. Enable Test Networks in your metamask
