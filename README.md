@@ -95,7 +95,7 @@ RemixIDE is an online solidity development platform. It has all the necessary fe
 4. If the compiler was showing any errors before, they should now have disappeared. The left-hand menu should show a green check mark.
 ![remix_7](assets/remix_7.png)
 
-###### 5.
+###### 5. Deploying
 On the left-hand menu, go to the 4th icon, **Deploy & Run transactions**. On the **Environment** dropdown, select *Inject Provider - MetaMask* (make sure your metamask is on the Goerli Network). The small text under the drodown should say *Goerli (5) network*. In the **Contract** dropdown, select the contract named '**GhostyERC721Ctr - contracts/GhostyERC721Ctr.sol**' (it's important to select the rigth contract. The name should start with GhostyERC721Ctr).
 ![remix_8](assets/remix_8.png)
 
