@@ -38,8 +38,8 @@ Note that the full deployment tutorial starts with deploying to Goerli testnet. 
 
 #### Deploying on Mainnet
 1. Setup RemixIDE
-2. Deploy to Goerli testnet
-3. Test contract/minting on Goerli testnet
+2. Deploy to Mainnet
+3. Test contract/minting
 4. Configure your contract
 5. Configure your metadata
 
@@ -134,5 +134,12 @@ Now that our contract is deployed and verified, let's interact with it. This is 
 #### Deploying on Mainnet
 
 ##### 1. Setup RemixIDE
-1. Repeat step 3 of the Goerli testnet **[deployment](#3-setup-remixide)**.
-2. 
+1. Switch your Metamask network to ETH Mainnet.
+2. Repeat step 3 of the Goerli testnet instructions **[Setup RemixIDE](#3-setup-remixide)**.
+
+##### 2. Deploy to Mainnet
+1. Repeat step 4 of the Goerli testnet instructions **[Deploy to Goerli testnet](#4-deploy-to-goerli-testnet)** BUT at **[step 5](#5-deploying)**, make sure that under the **Environment** it says *Main (1) network*.
+![remix_12](assets/remix_12.png)
+
+##### 3. Test contract/minting
+4. Repeat step 5 of the Goerli testnet instructions **[Test contract/minting on Goerli testnet](#5-test-contractminting-on-goerli-testnet)**
