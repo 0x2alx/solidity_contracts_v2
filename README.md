@@ -1,16 +1,18 @@
 # Ghosty Contracts
 
-## ERC721
+# ERC721
 This is a collection of solidity NFT smart contracts by [@ghooost0x2a](https://twitter.com/ghooost0x2a).
 
 For now, only ERC721 contract is provided. ERC1155 might be added in the future.
 
-### Why?
+## Why?
 
 Many people seem to be using manifold nowadays, and although they are doing a great job, their contracts are not perfect. For one, they have not yet implement the OpenSea RegistryFilter required for Royalties to be respected on OS sales.
 My contract is also full of features, customizable and easy to use.
 
-### Features
+
+
+## Features
 
 The contract was built by combining mutliple contracts and features from various places. It is based on the Ultra gas optimized ERC721B contract by @squuebo_nft integrated with the LockRegistry (2FA) contracts by @OwlOfMoistness (more on this later) and heavily modified and tested. Here are some of the features:
 * **Ultra Low Gas**
@@ -24,24 +26,24 @@ The contract was built by combining mutliple contracts and features from various
 * **Possibility of locking up the collection (so no more minting can be done)**
 * **Supports batch transfers**
 
-### Table of Contents
+## Table of Contents
 Note that the full deployment tutorial starts with deploying to Goerli testnet. If you want to deploy to mainnet directly (I recommend deploying to testnet at least once), please skip directly to the **[Deploying on Mainnet](#deploying-on-mainnet-1)** section.
 
 *Note these steps were all done on desktop Metamask using Chrome. That being said, they should work on any desktop browser.*
 
-#### [Deploying on Goerli testnet](#deploying-on-goerli-testnet-1)
+### [Deploying on Goerli testnet](#deploying-on-goerli-testnet-1)
 1. [Enable Test Networks in your metamask](#1-enable-test-networks-in-your-metamask)
 2. [Get Goerli testnet ETH](#2-get-goerli-testnet-eth)
 3. [Setup RemixIDE](#3-setup-remixide)
 4. [Deploy to Goerli testnet](#4-deploy-to-goerli-testnet)
 5. [Test contract/minting on Goerli testnet](#5-test-contractminting-on-goerli-testnet)
 
-#### [Deploying on Mainnet](#deploying-on-mainnet-1)
+### [Deploying on Mainnet](#deploying-on-mainnet-1)
 1. [Setup RemixIDE](#1-setup-remixide)
 2. [Deploy to Mainnet](#2-deploy-to-mainnet)
 3. [Test contract/minting](#3-test-contractminting)
 
-#### [Interacting with your Contract]()
+### [Interacting with your Contract]()
 *This section is important in order to understand how the contract works and how to use the various features.*
 1. [Minting info]()
 2. [Access Control/Delegation]()
@@ -52,13 +54,13 @@ Note that the full deployment tutorial starts with deploying to Goerli testnet. 
 6. [Extra WRITE functions]()
 
 
-#### Deploying on Goerli testnet
-##### 1. Enable Test Networks in your metamask
+### Deploying on Goerli testnet
+#### 1. Enable Test Networks in your metamask
 In metamask Settings > Advanced, enable **Show test networks**
 
 ![enable_testnets_png](assets/enable_testnets.png)
 
-##### 2. Get Goerli testnet ETH
+#### 2. Get Goerli testnet ETH
 1. First of all, create a FREE Alchemy account by going to **https://auth.alchemy.com/signup**.
 
 2. Once your account is created, go to **https://goerlifaucet.com/**, connect your newly created Alchemy account.
@@ -72,7 +74,7 @@ In metamask Settings > Advanced, enable **Show test networks**
 ![goerli_network](assets/switch_network.png)
 ![goerli_eth](assets/goerli_eth.png)
 
-##### 3. Setup RemixIDE 
+#### 3. Setup RemixIDE 
 RemixIDE is an online solidity development platform. It has all the necessary features to easily compile and deploy smart contracts, verify them, interact with them, etc.
 
 1. Open this page in a new tab, **https://github.com/ghooost0x2a/ghosty_contracts**, click on **Code** and **Download as ZIP**
@@ -100,7 +102,7 @@ RemixIDE is an online solidity development platform. It has all the necessary fe
 7. (Optional) Search for '**uint256 public MAX_SUPPLY = 10000**' in the contract (should be just above the ones from step #6). Change the value (10000) to the maximum size of your collection. Note that you are better off putting a bigger number now and reducing it afterwards. Once the contract is deployed, you will unable to mint more than MAX_SUPPLY tokens and that value cannot be increased AFTER the contract has been minted. 
 
 8. Click on the editor and click **CTRL+S** to save the changes. 
-##### 4. Deploy to Goerli testnet
+#### 4. Deploy to Goerli testnet
 1. On the left-hand menu in RemixIDE, click on the third icon, the **Solidity Compiler**
 
 ![remix_4](assets/remix_4.png)
@@ -117,7 +119,7 @@ RemixIDE is an online solidity development platform. It has all the necessary fe
 
 ![remix_7](assets/remix_7.png)
 
-###### 5. Deploying
+##### 5. Deploying
 On the left-hand menu, go to the 4th icon, **Deploy & Run transactions**. On the **Environment** dropdown, select *Inject Provider - MetaMask* (make sure your metamask is on the Goerli Network). The small text under the drodown should say *Goerli (5) network*. In the **Contract** dropdown, select the contract named '**GhostyERC721Ctr - contracts/GhostyERC721Ctr.sol**' (it's important to select the rigth contract. The name should start with GhostyERC721Ctr).
 
 ![remix_8](assets/remix_8.png)
@@ -150,7 +152,7 @@ On the left-hand menu, go to the 4th icon, **Deploy & Run transactions**. On the
 
 ![etherscan_4](assets/etherscan_4.png)
 
-##### 5. Test contract/minting on Goerli testnet
+#### 5. Test contract/minting on Goerli testnet
 Now that our contract is deployed and verified, let's interact with it. This is mainly done on Etherscan itself.
 1. Go to your Etherscan contract page and click on **Contract**, **Write Contract**. Then click on **Connect to Web3**. Make sure to connect with the same address you used to deploy the contract. 
 
@@ -164,17 +166,17 @@ Now that our contract is deployed and verified, let's interact with it. This is 
 
 **CONGRATULATIONS! You deployed your own contract to Goerli testnet. If you are ready to deploy to Mainnet, please read on.**
 
-#### Deploying on Mainnet
+### Deploying on Mainnet
 
-##### 1. Setup RemixIDE
+#### 1. Setup RemixIDE
 1. Switch your Metamask network to ETH Mainnet.
 2. Repeat step 3 of the Goerli testnet instructions **[Setup RemixIDE](#3-setup-remixide)**. **If you already did this step for the Goerli testnet deployment, you can skip it**
 
-##### 2. Deploy to Mainnet
+#### 2. Deploy to Mainnet
 1. Repeat step 4 of the Goerli testnet instructions **[Deploy to Goerli testnet](#4-deploy-to-goerli-testnet)** BUT at **[step 5](#5-deploying)**, make sure that under the **Environment** it says *Main (1) network*.
 
 ![remix_12](assets/remix_12.png)
 
-##### 3. Test contract/minting
+#### 3. Test contract/minting
 4. Repeat step 5 of the Goerli testnet instructions **[Test contract/minting on Goerli testnet](#5-test-contractminting-on-goerli-testnet)**. Just make sure your wallet is on the **Mainnet** network. *Also, in step 3, instead of going to the OS test page, you can go to the regular **[OpenSea](https://opensea.io/)***
 
