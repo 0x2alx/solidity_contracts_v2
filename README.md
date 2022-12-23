@@ -7,16 +7,13 @@ For now, only ERC721 contract is provided. ERC1155 might be added in the future.
 
 ## Why?
 
-Many people seem to be using manifold nowadays, and although they are doing a great job, their contracts are not perfect. For one, they have not yet implement the OpenSea RegistryFilter required for Royalties to be respected on OS sales.
-My contract is also full of features, customizable and easy to use.
-
-
+The motivation behind is project is to offer NFT creators/artists an alternative solution for their smart contract deployment. Instead of minting your NFTs on some markeplace contract you do not own or using other solutions like manifold that are more limited in terms of features and as of december 2022, have not yet implemented the OpenSea RegistryFilter required for royalties to be respected, I am providing my **GhostyERC721Ctr.sol** contract for anyone who would like to use it. 
+The tradeoff is complexity. Going this way is a bit more complicated than using manifold or lazy minting, BUT I believe it is worth it (see list of features below). The good news is, I have provided a very detailed guide below, as well as video demos. If you read it all, you will likely get a better understanding of how smart contracts work and will be able to easily deploy and interact with your own contract. Once you understand the process, you can easily deploy as many contracts/collections as you want.
 
 ## Features
 
 The contract was built by combining mutliple contracts and features from various places. It is based on the Ultra gas optimized ERC721B contract by @squuebo_nft integrated with the LockRegistry (2FA) contracts by @OwlOfMoistness (more on this later) and heavily modified and tested. Here are some of the features:
 * **Ultra Low Gas**
-* **2FA**
 * **Access Control/Delegation**
 * **Pausable**
 * **OpenSea RegistryFilter/Royalties Compliant**
@@ -25,6 +22,7 @@ The contract was built by combining mutliple contracts and features from various
 * **Mint to your own wallet or do airdrops to your collector wallets directly**
 * **Possibility of locking up the collection (so no more minting can be done)**
 * **Supports batch transfers**
+* **2FA**
 
 ## Table of Contents
 Note that the full deployment tutorial starts with deploying to Goerli testnet. If you want to deploy to mainnet directly (I recommend deploying to testnet at least once), please skip directly to the **[Deploying on Mainnet](#deploying-on-mainnet-1)** section.
