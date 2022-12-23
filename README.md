@@ -72,7 +72,7 @@ RemixIDE is an online solidity development platform. It has all the necessary fe
 
 2. Unzip the **ghosty_contracts-main.zip** file you just downloaded. You should end up with a folder containing all the files.
 
-![unzip_folder](assets/unzip_folder.png)
+![unzip_folder](assets/unzipped_folder.png)
 
 3. Go to **https://remix.ethereum.org/**. Delete everything in the **contracts** folder (in the left pane).
 
