@@ -41,6 +41,15 @@ Note that the full deployment tutorial starts with deploying to Goerli testnet. 
 2. [Deploy to Mainnet](#2-deploy-to-mainnet)
 3. [Test contract/minting](#3-test-contractminting)
 
+#### [Interacting with your Contract]()
+1. [Minting info]()
+2. [Access Control/Delegation]()
+3. [Configure metadata]()
+4. [Reduce collection size/Lock Minting]()
+5. [Setting roylaties on contract]()
+6. [Extra READ functions]()
+6. [Extra WRITE functions]()
+
 
 #### Deploying on Goerli testnet
 ##### 1. Enable Test Networks in your metamask
