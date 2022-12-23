@@ -228,6 +228,17 @@ Use this method to mint/airdrop NFTs to ***MULTIPLE*** wallets. In order to do t
 
 ***Airdropping 2 NFTs to 1 person, and 2 to 2 other persons***
 
-As we can see in the screenshot below, the first (1) and second (2) address highlighted in yellow are the one and the same. This means that it gets dropped 2 NFTs. Addresses 3 and 4 are both different, and they each get dropped 1 NFT for a total **quantity** of 4.
+As we can see in the screenshot below, the first (1) and second (2) address highlighted in yellow are one and the same. This means that it gets dropped 2 NFTs. Addresses 3 and 4 are both different, and they each get dropped 1 NFT for a total **quantity** of 4.
 ![etherscan_int_3](assets/etherscan_int_3.png)
+
+
+#### Access Control/Delegation
+The **GhostyERC721Ctr** contract implements the **OWNABLE** (Common OpenZeppelin library) functionality. This is a common thing for ERC721 contracts. This functionality defines an **OWNER** address. This is used to restrict the access of some of our smart contract functions, like the mint function. The **ownerMints** is restricted, otherwise anyone could mint NFTs on your contract for free. This is also used to restrict other functionality like setting/changing the metadata, the MAX_SUPPLY (size of the collection), and so on. By default, the owner of a contract is the address/person that deploys it on the blockchain.
+
+On top of the **Ownable** feature, this contract also implements **DELEGATES**. These are additional addresses, configured by the **OWNER** (only) that have access to restricted functions like mint, setting MAX_SUPPLY, setting metdata, etc. 
+
+An address designated as **DELEGATE** has the ALL the permissions that the **OWNER** has **EXCEPT** for the ability to designate other delegates. Only the **OWNER** of the contract can set and remove delegates.
+
+There are two main reasons for using delegates; If you are collaborating on a project with someone, and you want to give them access to mint and control the contract OR, if you want to give delegation to another one of your OWN addresses, for convenience (for instance, you deploy the contract from your ledger, but you delegate one of your metamask addresses to be able to mint from it).
+
 
