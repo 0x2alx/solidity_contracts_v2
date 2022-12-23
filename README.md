@@ -98,3 +98,15 @@ RemixIDE is an online solidity development platform. It has all the necessary fe
 ![etherscan_3](assets/etherscan_3.png)
 12. On your Etherscan contract page, you should now see a green check mark next to the **Contract** tab. If you click on it, you should also see 3 new buttons, **Code**, **Read Contract** and **Write Contract**. This confirms that your contract source code was successfully verified. Congrats!
 ![etherscan_4](assets/etherscan_4.png)
+
+##### 5. Test contract/minting on Goerli testnet
+Now that our contract is deployed and verified, let's interact with it. This is mainly done on Etherscan itself.
+1. Go to your Etherscan contract page and click on **Contract**, **Write Contract**. Then click on **Connect to Web3**. Make sure to connect with the same address you used to deploy the contract. 
+![etherscan_5](assets/etherscan_5.png)
+2. Click on function #7 **ownerMints**, and in quantity set **1** and for recipients set **\[YOUR_OWN_ADDRESS\]** (make sure to replace the YOUR_OWN_ADDRESS with your actual address between \[square brackets\]). Click on **Write** and approve the transaction in the Metamask popup.
+![etherscan_6](assets/etherscan_6.png)
+3. Go to OpenSea testnet page (https://testnets.opensea.io/) and search for your contract address. Make sure to wait for OpenSea dropdown and click on the search result (not on the looking glass or ENTER). Note, this will only work AFTER you minted at least 1 token.
+![os_1](assets/os_1.png)
+
+CONGRATULATIONS! You deployed your own contract to Goerli testnet. If you are ready to deploy to Mainnet, please read on.
+
