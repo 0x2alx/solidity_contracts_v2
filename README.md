@@ -50,9 +50,12 @@ In metamask Settings > Advanced, enable **Show test networks**
 
 ##### 2. Get Goerli testnet ETH
 1. First of all, create a FREE Alchemy account by going to **https://auth.alchemy.com/signup**.
+
 2. Once your account is created, go to **https://goerlifaucet.com/**, connect your newly created Alchemy account.
+
 3. Enter your wallet address (the one you will deploy the contract from) and click **Send me ETH**
 ![goerli_faucet](assets/goerli_faucet.png)
+
 4. In metamask, switch your network to **Goerli test network** and confirm you received 0.5 Goerli ETH.
 ![goerli_network](assets/switch_network.png)
 ![goerli_eth](assets/goerli_eth.png)
@@ -62,15 +65,21 @@ RemixIDE is an online solidity development platform. It has all the necessary fe
 
 1. Open this page in a new tab, **https://github.com/ghooost0x2a/ghosty_contracts**, click on **Code** and **Download as ZIP**
 ![github_download](assets/github_download.png)
+
 2. Unzip the **ghosty_contracts-main.zip** file you just downloaded. You should end up with a folder containing all the files.
 ![unzip_folder](assets/unzip_folder.png)
+
 3. Go to **https://remix.ethereum.org/**. Delete everything in the **contracts** folder (in the left pane).
 ![remix_1](assets/remix_1.png)
+
 4. Select the **contracts** folder, and click on the little **Upload** icon. Go to the unzipped folder and select the **GhostyERC721Ctr.sol**
 ![remix_2](assets/remix_2.png)
+
 5. (Optional) You can delete or change the ASCII art at the top of the contract. Only delete the selected text (in the screenshot below), make sure not to delete the /\*\*\* at the top. *Note that in solidity, multi-line comments start with /\*\*\* and end with \*/. In remix, comments appear as green text.*
 ![remix_3](assets/remix_3.png)
+
 6. In the **GhostyERC721Ctr.sol** file, search for the following text '**GhostyERC721Ctr_NAME_TO_REPLACE**'. Change that to the name of your collection. Then search for the text '**G0x2a**' and replace that with the token symbol you want (this is a 2-4 character code that will use to identify the token/NFT on the blockchain. For example: A15, DS, DD, etc.)
+
 7. (Optional) Search for '**uint256 public MAX_SUPPLY = 10000**' in the contract (should be just above the ones from step #6). Change the value (10000) to the maximum size of your collection. Note that you are better off putting a bigger number now and reducing it afterwards. Once the contract is deployed, you will unable to mint more than MAX_SUPPLY tokens and that value cannot be increased AFTER the contract has been minted. 
 8. Click on the editor and click **CTRL+S** to save the changes. 
 ##### 4. Deploy to Goerli testnet
@@ -119,5 +128,8 @@ Now that our contract is deployed and verified, let's interact with it. This is 
 3. Go to OpenSea testnet page (https://testnets.opensea.io/) and search for your contract address. Make sure to wait for OpenSea dropdown and click on the search result (not on the looking glass or ENTER). Note, this will only work AFTER you minted at least 1 token.
 ![os_1](assets/os_1.png)
 
-CONGRATULATIONS! You deployed your own contract to Goerli testnet. If you are ready to deploy to Mainnet, please read on.
+**CONGRATULATIONS! You deployed your own contract to Goerli testnet. If you are ready to deploy to Mainnet, please read on.**
 
+#### Deploying on Mainnet
+
+[test](#3-setup-remixide)
