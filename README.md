@@ -44,6 +44,7 @@ Note that the full deployment tutorial starts with deploying to Goerli testnet. 
 
 ### [Interacting with your Contract]()
 *This section is important in order to understand how the contract works and how to use the various features.*
+1. [Smart Contracts General Info]()
 1. [Minting info]()
 2. [Access Control/Delegation]()
 3. [Configure metadata]()
@@ -178,4 +179,44 @@ Now that our contract is deployed and verified, let's interact with it. This is 
 
 #### 3. Test contract/minting
 4. Repeat step 5 of the Goerli testnet instructions **[Test contract/minting on Goerli testnet](#5-test-contractminting-on-goerli-testnet)**. Just make sure your wallet is on the **Mainnet** network. *Also, in step 3, instead of going to the OS test page, you can go to the regular **[OpenSea](https://opensea.io/)***
+
+
+### Interacting with your Contract
+
+#### Smart Contracts General Info
+What is a smart contract anyway? 
+Simply put, a smart contract is a program (written in solidity language), stored on the blockchain. This program is stored at a given address (called the contract or collection address) created at the moment of the contract deployment on the blockchain.
+The program contains variables and functions (procedures). Once a contract is deployed on the blockchain, we can interact with it, aka read and modify its variables and call its functions. 
+A DAPP (Decentralized APP) is simply a web2 website with code allowing it to interact with the blockchain and call the functions on a given contract. It serves as the GUI for interacting a contract. So when an NFT project deploys a smart contract, they will typically create a DAPP that will allow its community to mint the NFTs. The DAPP simply sends calls to the mint function on the smart contract, on behalf of the user who then approves those calls/interactions in their wallet (e.g. Metamask).
+
+In this tutorial, we are not creating any DAPPs. That subject is a more complex subject and the GhostyERC721Ctr contract only has one mint function reseved to the owner/deployer of the contract. As mentioned, DAPPs are simply user interfaces to interact with a smart contract, but there are other ways to do it. The easiest is using etherscan directly. When we deploy and verify our smart contract, etherscan gives us access to its variables and functions. We can simply call the contract functions (like mint), from etherscan itself, without any DAPPs.
+#### Minting info
+
+As mentioned this contract has only one minting function called **ownerMints**. This function can only be used/called by the owner/creator of the contract, and his chosen delegates (see next section for more info on delegates).
+
+The **ownerMints** function takes two parameters (arguments/variables). In other words, when we call this mint function, we need to give it two pieces of information, namely the **quantity** of NFTs we would like to mint, and the **recipients** of those NFTs aka the address(es) where we want to send those NFTs. 
+This mint function, can be used two ways; **Minting to a SINGLE wallet** or doing an **Airdrop to MULTIPLE wallets** 
+
+##### Minting to a SINGLE wallet
+Use this method to mint one or multiple NFTs to a ***SINGLE*** wallet (that you own). In order to do this, you enter the **quantity** you want (number of NFTs) and for **recipients**, you put one of your OWN wallet \[addresses\] (DO NOT PUT THE CONTRACT ADDRESS). This could be the same address you used to deploy the contract, or another one that you own. This is basically the address where all the (**quantity**) NFTs will be sent once minted.
+**Make sure that the \[address\] is between square brackets, this is IMPORTANT! (see example screenshot)**
+
+* *Of course, this function will fail if you are not connected to etherscan with an authorized address (either the owner/creator or a delegate address).*
+
+* *Another potential failure reason is if you are busting the MAX_SUPPLY you set in the contract during deployment. MAX_SUPPLY is the absolute maximum amount of NFTs that can ever exist in this collection. You can view its value by goign to the **Read Contract** tab, and clicking on MAX_SUPPLY* 
+
+![etherscan_int_1](assets/etherscan_int_1.png)
+
+##### Airdrop to MULTIPLE wallets
+Use this method to mint/airdrop NFTs to ***MULTIPLE*** wallets. In order to do this, you provide the **quantity** and for **recipients**, a ***LIST*** of addresses (not just one), separated by commas (,) and between \[square brackets\].
+
+**VERY IMPORTANT!** This method will mint ONE nft to EACH address provided in the list. This means that the number of addresses provided in the list must exactly match the **quantity** number. If you want to mint/airdrop more than one to the same address, simply put that same address multiple times in your **recipients** list. That person will get as many NFTs as times their address appears in the **recipients** list.
+
+**Examples**
+***Airdropping 3 NFTs to 3 different persons***
+![etherscan_int_2](assets/etherscan_int_2.png)
+
+***Airdropping 2 NFTs to 1 person, and 2 to 2 other persons***
+As we can see in the screenshot below, the first (1) and second (2) address highlighted in yellow are the one and the same. This means that it gets dropped 2 NFTs. Addresses 3 and 4 are both different, and they each get dropped 1 NFT for a total **quantity** of 4.
+![etherscan_int_3](assets/etherscan_int_3.png)
 
