@@ -1048,7 +1048,7 @@ contract Delegated is Ownable {
     }
 
     //onlyOwner
-    function isDelegate(address addr) external view onlyOwner returns (bool) {
+    function isDelegate(address addr) external view returns (bool) {
         return _delegates[addr];
     }
 

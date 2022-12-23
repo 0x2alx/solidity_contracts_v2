@@ -242,7 +242,15 @@ An address designated as **DELEGATE** has the ALL the permissions that the **OWN
 
 There are two main reasons for using delegates; If you are collaborating on a project with someone, and you want to give them access to mint and control the contract OR, if you want to give delegation to another one of your OWN addresses, for convenience (for instance, you deploy the contract from your ledger, but you delegate one of your metamask addresses to be able to mint from it).
 
-##### Add new delegate
+##### Add/Remove delegate
 In order to add a new delegate address, first go to Write Contract on Etherscan, and **Connect to Web3** with the **OWNER** wallet (the one you deployed from). Scroll down and click on function #18 **setDelegate**. For **addr** field, enter the address you would like to set as delegate (cannot be the contract address nor the **OWNER** address). For the **isDelegate_** field set the value to **true** and click on **Write**.
 
+If you want to *remove* a previous delegate, simply put **false** in the **isDelegate_** field.
+
 ![etherscan_int_4](assets/etherscan_int_4.png)
+
+##### Check if an address is a delegate
+On Etherscan, switch to the **Read Contract** tab, scroll down to function #9 **isDelegate**. Enter the address you want to check and click on **Query**. This will return true or false.
+
+![etherscan_int_5](assets/etherscan_int_5.png)
+
