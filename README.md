@@ -159,7 +159,7 @@ Now that our contract is deployed and verified, let's interact with it. This is 
 
 ##### 1. Setup RemixIDE
 1. Switch your Metamask network to ETH Mainnet.
-2. Repeat step 3 of the Goerli testnet instructions **[Setup RemixIDE](#3-setup-remixide)**.
+2. Repeat step 3 of the Goerli testnet instructions **[Setup RemixIDE](#3-setup-remixide)**. **If you already did this step for the Goerli testnet deployment, you can skip it**
 
 ##### 2. Deploy to Mainnet
 1. Repeat step 4 of the Goerli testnet instructions **[Deploy to Goerli testnet](#4-deploy-to-goerli-testnet)** BUT at **[step 5](#5-deploying)**, make sure that under the **Environment** it says *Main (1) network*.
@@ -167,5 +167,5 @@ Now that our contract is deployed and verified, let's interact with it. This is 
 ![remix_12](assets/remix_12.png)
 
 ##### 3. Test contract/minting
-4. Repeat step 5 of the Goerli testnet instructions **[Test contract/minting on Goerli testnet](#5-test-contractminting-on-goerli-testnet)**. Just make sure your wallet is on the **Mainnet** network. *Also, in step 3, instead of going to the OS test page, you can go to the regular **[OpenSea](https://opensea.io/)**
+4. Repeat step 5 of the Goerli testnet instructions **[Test contract/minting on Goerli testnet](#5-test-contractminting-on-goerli-testnet)**. Just make sure your wallet is on the **Mainnet** network. *Also, in step 3, instead of going to the OS test page, you can go to the regular **[OpenSea](https://opensea.io/)***
 
