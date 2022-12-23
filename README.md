@@ -213,10 +213,14 @@ Use this method to mint/airdrop NFTs to ***MULTIPLE*** wallets. In order to do t
 **VERY IMPORTANT!** This method will mint ONE nft to EACH address provided in the list. This means that the number of addresses provided in the list must exactly match the **quantity** number. If you want to mint/airdrop more than one to the same address, simply put that same address multiple times in your **recipients** list. That person will get as many NFTs as times their address appears in the **recipients** list.
 
 **Examples**
+
 ***Airdropping 3 NFTs to 3 different persons***
+
 ![etherscan_int_2](assets/etherscan_int_2.png)
 
+
 ***Airdropping 2 NFTs to 1 person, and 2 to 2 other persons***
+
 As we can see in the screenshot below, the first (1) and second (2) address highlighted in yellow are the one and the same. This means that it gets dropped 2 NFTs. Addresses 3 and 4 are both different, and they each get dropped 1 NFT for a total **quantity** of 4.
 ![etherscan_int_3](assets/etherscan_int_3.png)
 
