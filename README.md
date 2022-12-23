@@ -229,6 +229,7 @@ Use this method to mint/airdrop NFTs to ***MULTIPLE*** wallets. In order to do t
 ***Airdropping 2 NFTs to 1 person, and 2 to 2 other persons***
 
 As we can see in the screenshot below, the first (1) and second (2) address highlighted in yellow are one and the same. This means that it gets dropped 2 NFTs. Addresses 3 and 4 are both different, and they each get dropped 1 NFT for a total **quantity** of 4.
+
 ![etherscan_int_3](assets/etherscan_int_3.png)
 
 
@@ -241,4 +242,7 @@ An address designated as **DELEGATE** has the ALL the permissions that the **OWN
 
 There are two main reasons for using delegates; If you are collaborating on a project with someone, and you want to give them access to mint and control the contract OR, if you want to give delegation to another one of your OWN addresses, for convenience (for instance, you deploy the contract from your ledger, but you delegate one of your metamask addresses to be able to mint from it).
 
+##### Add new delegate
+In order to add a new delegate address, first go to Write Contract on Etherscan, and **Connect to Web3** with the **OWNER** wallet (the one you deployed from). Scroll down and click on function #18 **setDelegate**. For **addr** field, enter the address you would like to set as delegate (cannot be the contract address nor the **OWNER** address). For the **isDelegate_** field set the value to **true** and click on **Write**.
 
+![etherscan_int_4](assets/etherscan_int_4.png)
