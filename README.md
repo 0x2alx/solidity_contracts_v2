@@ -45,13 +45,13 @@ Note that the full deployment tutorial starts with deploying to Goerli testnet. 
 ### [Interacting with your Contract]()
 *This section is important in order to understand how the contract works and how to use the various features.*
 1. [Smart Contracts General Info]()
-1. [Minting info]()
-2. [Access Control/Delegation]()
-3. [Configure metadata]()
-4. [Reduce collection size/Lock Minting]()
-5. [Setting roylaties on contract]()
-6. [Extra READ functions]()
-6. [Extra WRITE functions]()
+2. [Minting info]()
+3. [Access Control/Delegation]()
+4. [Configure metadata]()
+5. [Reduce collection size/Lock Minting]()
+6. [Setting roylaties on contract]()
+7. [Extra READ functions]()
+8. [Extra WRITE functions]()
 
 
 ### Deploying on Goerli testnet
@@ -184,7 +184,7 @@ Now that our contract is deployed and verified, let's interact with it. This is 
 ### Interacting with your Contract
 
 
-#### Smart Contracts General Info
+#### 1. Smart Contracts General Info
 What is a smart contract anyway? 
 Simply put, a smart contract is a program (written in solidity language), stored on the blockchain. This program is stored at a given address (called the contract or collection address) created at the moment of the contract deployment on the blockchain.
 The program contains variables and functions (procedures). Once a contract is deployed on the blockchain, we can interact with it, aka read and modify its variables and call its functions. 
@@ -194,7 +194,7 @@ A DAPP (Decentralized APP) is simply a web2 website with code allowing it to int
 This documentation does not cover DAPP creation. That subject is a more complex subject and the GhostyERC721Ctr contract only has one mint function reseved to the owner/deployer of the contract. As mentioned, DAPPs are simply user interfaces to interact with a smart contract, but there are other ways to do that. The easiest is using etherscan directly. When we deploy and verify our smart contract, etherscan gives us access to its variables and functions. We can simply call the contract functions (like mint), from etherscan itself, without any DAPPs.
 
 
-#### Minting info
+#### 2. Minting info
 
 As mentioned this contract has only one minting function called **ownerMints**. This function can only be used/called by the owner/creator of the contract, and his chosen delegates (see next section for more info on delegates).
 
@@ -233,7 +233,7 @@ As we can see in the screenshot below, the first (1) and second (2) address high
 ![etherscan_int_3](assets/etherscan_int_3.png)
 
 
-#### Access Control/Delegation
+#### 3. Access Control/Delegation
 The **GhostyERC721Ctr** contract implements the **OWNABLE** (Common OpenZeppelin library) functionality. This is a common thing for ERC721 contracts. This functionality defines an **OWNER** address. This is used to restrict the access of some of our smart contract functions, like the mint function. The **ownerMints** is restricted, otherwise anyone could mint NFTs on your contract for free. This is also used to restrict other functionality like setting/changing the metadata, the MAX_SUPPLY (size of the collection), and so on. By default, the owner of a contract is the address/person that deploys it on the blockchain.
 
 On top of the **Ownable** feature, this contract also implements **DELEGATES**. These are additional addresses, configured by the **OWNER** (only) that have access to restricted functions like mint, setting MAX_SUPPLY, setting metdata, etc. 
@@ -254,3 +254,22 @@ On Etherscan, switch to the **Read Contract** tab, scroll down to function #9 **
 
 ![etherscan_int_5](assets/etherscan_int_5.png)
 
+
+#### 4. Configure metadata
+An NFT's metadata is not stored on the blockchain. The smart contract is simply text/code that dictates who owns what NFT in the collection. The contract has a function called **tokenURI** which returns the URI to the metadata of a given token number. In other words, it tells us the location of the metadata for a specific token in that collection, based on the token number. The metadata is a json file (a text file) containing information about the NFT; i.e. Description, title, image_url, attributes/traits, etc. 
+
+Marketplates like OpenSea and Foundation (or any other NFT marketplace), interact with your smart contract by calling the **tokenURI** function for every token in your collection. It then uses the result that our smart contract returns, which will be a link to our json/text file. OS will then look into that file, find the image_url and use that to show you the NFT image/art. It will also get the attributes, title and description from that same json/text file.
+
+What is important to understand here is that the blockchain, the smart contract, is not aware of your metadata or image. The json/text files and images are uploaded separately and independently of the smart contract itself, typically to a decentralized storage like IPFS. Once uploaded, we will update the **tokenURI** function on our smart contract to point to our freshly uploaded json/text files (which in turn will point to our images).
+
+The **tokenURI** function uses 3 variables to *build* the URI of a given token; the *tokenID* which is provided when the **tokenURI** function is called, the *baseURI* and the *uriSuffix*. These last 2 variables are constant and configured by an authorized delegate. So when we call the **tokenURI** function (with an existing NFT number), it will return this:
+
+**{baseURI}{tokenID}{uriSuffix}**
+
+so for IPFS, for instance, we will set:
+* **baseURI** to something like *ipfs://bafybeiace7uxgel7t3nd3pavhhq4hjnctvwhhev2jbu2agqoolyclyhs74/* (this is the CID we get after uploading our files to IPFS)
+* **uriSuffix** to *.json* (For our purpouses, the *uriSuffix* will ALWAYS be *.json*)
+
+after we set those variables above using the *setBaseSuffixURI* function (see below) and we query for *tokenURI* 1, we would get
+
+**ipfs://bafybeiace7uxgel7t3nd3pavhhq4hjnctvwhhev2jbu2agqoolyclyhs74/1.json**
