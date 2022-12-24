@@ -262,7 +262,7 @@ Marketplates like OpenSea and Foundation (or any other NFT marketplace), interac
 
 What is important to understand here is that the blockchain, the smart contract, is not aware of your metadata or image. The json/text files and images are uploaded separately and independently of the smart contract itself, typically to a decentralized storage like IPFS. Once uploaded, we will update the **tokenURI** function on our smart contract to point to our freshly uploaded json/text files (which in turn will point to our images).
 
-The **tokenURI** function uses 3 variables to *build* the URI of a given token; the *tokenID* which is provided when the **tokenURI** function is called, the *baseURI* and the *uriSuffix*. These last 2 variables are constant and configured by an authorized delegate. So when we call the **tokenURI** function (with an existing NFT number), it will return this:
+The **tokenURI** function uses 3 variables to *build* the URI of a given token; the *tokenID* which is provided when the **tokenURI** function is called, the *baseURI* and the *uriSuffix*. These last 2 variables are constant and configured by an authorized delegate. So when we call the **tokenURI** function (with an existing NFT number), it will return the URI (URL aka web link) to the json/text metadata of that particular NFT by concatenating these 3 variables as such:
 
 **{baseURI}{tokenID}{uriSuffix}**
 
