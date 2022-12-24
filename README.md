@@ -273,3 +273,7 @@ so for IPFS, for instance, we will set:
 after we set those variables above using the *setBaseSuffixURI* function (see below) and we query for *tokenURI* 1, we would get
 
 **ipfs://bafybeiace7uxgel7t3nd3pavhhq4hjnctvwhhev2jbu2agqoolyclyhs74/1.json**
+
+![token_uri_2](assets/token_uri_2.png)
+
+
