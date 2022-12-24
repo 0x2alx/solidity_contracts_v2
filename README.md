@@ -3,7 +3,9 @@
 # ERC721
 This is a collection of solidity NFT smart contracts by [@ghooost0x2a](https://twitter.com/ghooost0x2a).
 
-For now, only ERC721 contract is provided. ERC1155 might be added in the future.
+*For now, only ERC721 contract is provided. ERC1155 might be added in the future.*
+
+If you have questions, comments, feedback, don't hesitate to DM me on twiter.
 
 ## Why?
 
@@ -44,16 +46,16 @@ Note that the full deployment tutorial starts with deploying to Goerli testnet. 
 2. [Deploy to Mainnet](#2-deploy-to-mainnet)
 3. [Test contract/minting](#3-test-contractminting)
 
-### [Interacting with your Contract]()
+### [Interacting with your Contract](#interacting-with-your-contract-1)
 *This section is important in order to understand how the contract works and how to use the various features.*
-1. [Smart Contracts General Info]()
-2. [Minting info]()
-3. [Access Control/Delegation]()
-4. [Configure metadata]()
-5. [Reduce collection size/Lock Minting]()
-6. [Setting roylaties on contract]()
-7. [Extra READ functions]()
-8. [Extra WRITE functions]()
+1. [Smart Contracts General Info](#1-smart-contracts-general-info)
+2. [Minting info](#2-minting-info)
+3. [Access Control/Delegation](#3-access-controldelegation)
+4. [Configure metadata](#4-configure-metadata)
+5. [Reduce collection size/Lock Minting](#5-reduce-collection-sizelock-minting)
+6. [Setting royalties on contract](#6-setting-royalties-on-contract)
+7. [Extra READ functions](#6-extra-read-functions)
+8. [Extra WRITE functions](#7-extra-write-functions)
 
 
 ### Deploying on Goerli testnet
@@ -395,7 +397,7 @@ To reduce the **MAX_SUPPLY**, you need to go on https://etherscan.io/ (or https:
 
 ![etherscan_10](assets/etherscan_10.png)
 
-#### 6. Setting roylaties on contract
+#### 6. Setting royalties on contract
 On some marketplaces, royalties need to be set directly on the marketplace, when you cofigure your collection. That being said, nowadays, most marketplaces implement the token royalties from the contract itself (if it is written in the contract, of course).
 
 There are **TWO** ways to set royalties; default and individual roaylties.
