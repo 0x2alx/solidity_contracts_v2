@@ -57,6 +57,8 @@ Note that the full deployment tutorial starts with deploying to Goerli testnet. 
 7. [Extra READ functions](#6-extra-read-functions)
 8. [Extra WRITE functions](#7-extra-write-functions)
 
+### [Annex](#annex)
+1. [NFT description Markdown](#nft-description-markdown)
 
 ### Deploying on Goerli testnet
 #### 1. Enable Test Networks in your metamask
