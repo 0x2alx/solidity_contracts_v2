@@ -382,5 +382,47 @@ ipfs://QmY9pYwjLC1isrmR6P3xMmswwB9dWCLaVCE9Xyrq1gdoy6/
 ![etherscan_9](assets/etherscan_9.png)
 
 
+#### 5. Reduce collection size/Lock Minting
+The absolute maximum size of your collection is defined by the **MAX_SUPPLY** variable in your contract. You can view its current value on etherscan (by going to **Read Contract** and clicking on **MAX_SUPPLY**).
+
+If your collection reaches the max supply value, minting will be stopped. You can never have more NFTs than this max value. After a contract has been deployed to the blockchain, the **MAX_SUPPLY** value **CANNOT BE INCREASED** it can only be *reduced* (descreased). This means you are better off setting a bigger **MAX_VALUE** when you initially mint the contract and reduce it afterwards if you want.
+
+Why would you want to reduce your collection size (MAX_SUPPLY)? The main motivation behind this is to lock/stop the minting and freeze the collection size. Say you have released 30 NFTs in this collection, and you are done with it, you do not plan on making new NFTs in this particular collection. Well, you could then reduce the **MAX_SUPPLY** to 30. This would lock the collection, so no one would be able to mint more NFTs on this particular contract (not even the owner/creator). This is usually to reassure collectors that the supply of a given NFT collection will not suddenly increase in the future (which would make the value of existing NFTs decrease).
+
+To reduce the **MAX_SUPPLY**, you need to go on https://etherscan.io/ (or https://goerli.etherscan.io/ if you are doing this on testnet), go to **Write Contract**, **Connect to Web3** and scroll down to function #20 **setReducedMaxSupply**. Enter the new size of your collection, and click **Write**.
+
+**Note that the new size of the collection CANNOT be bigger than the current *MAX_SUPPLY* value or smaller than the current size of the collection (current number of minted NFTs)**
+
+![etherscan_10](assets/etherscan_10.png)
+
+#### 6. Setting roylaties on contract
+On some marketplaces, royalties need to be set directly on the marketplace, when you cofigure your collection. That being said, nowadays, most marketplaces implement the token royalties from the contract itself (if it is written in the contract, of course).
+
+There are **TWO** ways to set royalties; default and individual roaylties.
+
+##### Default Royalty
+I ALWAYS recommend setting the default royalty first. This is the royalty that will be applied to ALL NFTs, unless you specifically set a different one for individual NFT(s). 
+
+1. Go to etherscan, **Write Contract** and **Connect to Web3**. Scroll down to function #17 **setDefaultRoyalty**. For the ***receiver*** field, your own wallet address. This is where the royalties will be sent. 
+
+2. For the second field, *feeNumerator*, we put the royalty value. The royalty is calculated by diving by 10000 (instead of 100). This means that if you want 5% royalty, the *feeNumerator* will be 500, if you want 7% royalties, the *feeNumerator* will be 700, and so on (you mutliply the % value you want by 100).
+
+![etherscan_11](assets/etherscan_11.png)
+
+##### Individual (per NFT) royalty
+If you want some specific tokens to have a different royalty (or no royalty at all), we can use the **setTokenRoyalty** function #21. Just like for the *Default Royalty*, we put the same type of values for *receiver* and *feeNumerator* and we put a specific *tokenId*.
+
+*Note, you can put 0 for the feeNumerator if you want a particular token to have 0% royalties*
+
+![etherscan_12](assets/etherscan_12.png)
+
+##### Checking your token royalties
+In order to check/confirm that your royalties have been properly set, you can go on etherscan, on **Read Contract** and scroll down to function #24 **royaltyInfo** and click on it. For *_tokenId* enter the number of an NFT and for *_salesPrice* enter a fictious amount like 100.
+
+*In the screenshots below, we see that the royalty for token #2 is 7%. This is the **Default Royalty**. The other screenshot, for NFT #1 shows 0% royalty because for token #1 we set a specific/individual royalty that overrides the **Default** one.* 
+
+![etherscan_13](assets/etherscan_13.png)
+![etherscan_14](assets/etherscan_14.png)
+
 ## ANNEX
 ### NFT description Markdown
