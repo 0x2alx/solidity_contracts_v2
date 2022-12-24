@@ -424,5 +424,27 @@ In order to check/confirm that your royalties have been properly set, you can go
 ![etherscan_13](assets/etherscan_13.png)
 ![etherscan_14](assets/etherscan_14.png)
 
+
+On the **Contract** tab on etherscan, we see 3 submenus; 
+* **Code** = This is where you can see the whole smart contract code.
+* **Read Contract** = This is where we can read the state/configuration of our contract. The functions in this section do not require you to **Connect to Web3** nor pay any gas fees, since they do NOT change the state of the blockchain (we do not write anything to our smart contract, we simply read its values).
+* **Write Contract** = This is where we can change/update the state/configuration of our contract (minting, setting royalties, setting metadata, etc). We need to be **Connect to Web3** on etherscan, with the owner wallet (or a delegated address). Calling these functions require gas. 
+
+#### 6. Extra READ functions
+Outside of all the **Read functions** discussed in the various sections above, here are a few extra ones that might be useful;
+* **balanceOf** = You put an ehterscan address in here, and it will tell you how many NFTs of this collection that address has
+* **paused** = Tells use whether the contract is paused (True) or not (False). When the contract is paused, NFT transfers are also paused (blocked) 
+* **totalSupply** = The total amount of minted NFTs so far
+* **walletOfOwner** = Returns a (comma separated) list of NFTs owned by a particular address/wallet
+
+#### 7. Extra WRITE functions
+* **deleteDefaultRoyalty** = deletes the default royalty information
+* **resetTokenRoyalty** = deletes the individual/specific royalty information of a given token/NFT
+* **safeTransferFrom** = This is to transfer/send NFTs between wallets. We specify the *from* wallet, the *to* wallet and the tokenId. This can only be called by the owner of the NFT (not the contract owner) or an approved operator.
+* **togglePaused** = Used to pause (true) or unpause (false) the contract/transfers. Possible values are ***true*** or ***false*** (all small caps)
+* **transferBatch** = This works just like **safeTransferFrom** but for multiple NFTs at once. Of course, you must own ALL of those NFTs you are trying to batch transfer (or be approved). For the *tokenIds* field, we provide a \[comma, spearated, list\] of values (e.g. [1, 2, 3]) between scare brackets. For the *data* fiels, simply put ***0x0***.
+
+![etherscan_15](assets/etherscan_15.png)
+
 ## ANNEX
 ### NFT description Markdown
