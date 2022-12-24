@@ -308,7 +308,7 @@ There are many IPFS providers out there and most of them offer a free IPFS tier 
 
 Now we will have to edit that text for our corrent NFT. (*Let's assume we are creating the metadata for NFT 2*):
 * **{NAME_OF_YOUR_NFT}** = This is the name of the NFT that appears at the top, on marketplaces (OS, FND, etc.). *See screenshot below*
-* **{DESCRIPTION_OF_NFT}** = This is the long(er) description text of the NFT. Most marketplaces allow for [*markdown*]() text in this field.  *See screenshot below*
+* **{DESCRIPTION_OF_NFT}** = This is the long(er) description text of the NFT. Most marketplaces allow for *[markdown](#nft-description-markdown)* text in this field.  *See screenshot below*
 * **{LINK_TO_NFT_IMAGE}** = This is the link to our NFT's image/art. The one uploaded on filebase earlier. For this field, we need to get the CID of our image from filebase. You can click on the little copy button next to the image for this particular NFT. Then, the value of this field becomes:
 ```ipfs://QmNq6VZMD4ErFSc6t7U3eAkTTFpfABg8yQ7pTHQsYo5XGk```
 
@@ -350,7 +350,7 @@ You also need to change the values of **{ATTRIBUTE_1}** and **{ATTRIBUTE_2}** to
 }
 ```
 
-Save the file to something like **avril_#2.json** on your computer (note the *.json* file extension)
+Save the file to something like **nft_#2.json** on your computer (note the *.json* file extension)
 
 6. Repeat step #5 for all the NFTs you have minted. Make sure to change the title, the edition number, THE IMAGE URL, etc. Once you have all you ***.json*** files saved on your local computer, we are ready to upload them to filebase. 
 
@@ -359,7 +359,7 @@ Save the file to something like **avril_#2.json** on your computer (note the *.j
 ![filebase_7](assets/filebase_7.png)
 ![filebase_8](assets/filebase_8.png)
 
-8. Go to **[Updating the metadata on the contract]()** in order to update the tokenURI on the contract.
+8. Go to **[Updating the metadata on the contract](#updating-the-metadata-on-the-contract)** in order to update the tokenURI on the contract.
 
 ##### Updating the metadata on the contract
 Now that our images AND our json/text files (metadata) have been uploaded to IPFS, we need to update our contract to point to them.
@@ -383,4 +383,4 @@ ipfs://QmY9pYwjLC1isrmR6P3xMmswwB9dWCLaVCE9Xyrq1gdoy6/
 
 
 ## ANNEX
-### NFT description Markdown.
+### NFT description Markdown
