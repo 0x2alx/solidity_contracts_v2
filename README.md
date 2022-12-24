@@ -264,7 +264,7 @@ Marketplates like OpenSea and Foundation (or any other NFT marketplace), interac
 
 What is important to understand here is that the blockchain, the smart contract, is not aware of your metadata or image. The json/text files and images are uploaded separately and independently of the smart contract itself, typically to a decentralized storage like IPFS or arweave. Once uploaded, we will update the **tokenURI** function on our smart contract to point to our freshly uploaded json/text files (which in turn will point to our images).
 
-##### 4. Uploading your files to IPFS (free)
+##### Uploading your files to IPFS (free)
 
 There are many IPFS providers out there and most of them offer a free IPFS tier with limits on the number of files/storage size. This is perfect for one of one artists, as the amount of data is small compared to a generative project. For this documentation, we will use Filebase (https://filebase.com/). Their free tier allows for 5 GB of storage and 1000 pinned files (more than enough). 
 
@@ -272,4 +272,115 @@ There are many IPFS providers out there and most of them offer a free IPFS tier 
 
 ![filebase_1](assets/filebase_1.png)
 
+2. (Close the Welcome popup) On the left-hand menu, click on **Buckets** and then click on the orange **Create Bucket** button at the top right of the page. Give it a unique name, something related to your project/collection. This will be used to upload all the data for all the NFTs on this contract. The **Storage Network** should remain *IPFS (Always public)*.
 
+![filebase_2](assets/filebase_2.png)
+
+3. Once the Bucket is created, click on it's name, then at the top right corner, click on the **New Folder** button. Name that folder **images**.
+
+![filebase_3](assets/filebase_3.png)
+![filebase_4](assets/filebase_4.png)
+
+4. Upload your image(s) into the newly created **images** folder, by clicking on the orange **Upload** button at the top-right, and selecting **File**. You can then upload mutliple images at once.
+
+![filebase_5](assets/filebase_5.png)
+
+5. Now that your images are uploaded, we can create our json/text metadata. We will have to create a json/text file for each NFT. Start by opening a text editor (any will do). Paste the following text/json in your editor:
+
+```
+{
+    "name": "{NAME_OF_YOUR_NFT}",
+    "description": "{DESCRIPTION_OF_NFT}",
+    "image": "{LINK_TO_NFT_IMAGE}",
+    "edition": {NFT_NUMBER},
+    "attributes": [
+        {
+            "trait_type": "{ATTRIBUTE_1}",
+            "value": "{VALUE_1}"
+        },
+        {
+            "trait_type": "{ATTRIBUTE_2}",
+            "value": "{VALUE_2}"
+        },
+    ],
+}
+```
+
+Now we will have to edit that text for our corrent NFT. (*Let's assume we are creating the metadata for NFT 2*):
+* **{NAME_OF_YOUR_NFT}** = This is the name of the NFT that appears at the top, on marketplaces (OS, FND, etc.). *See screenshot below*
+* **{DESCRIPTION_OF_NFT}** = This is the long(er) description text of the NFT. Most marketplaces allow for [*markdown*]() text in this field.  *See screenshot below*
+* **{LINK_TO_NFT_IMAGE}** = This is the link to our NFT's image/art. The one uploaded on filebase earlier. For this field, we need to get the CID of our image from filebase. You can click on the little copy button next to the image for this particular NFT. Then, the value of this field becomes:
+```ipfs://QmNq6VZMD4ErFSc6t7U3eAkTTFpfABg8yQ7pTHQsYo5XGk```
+
+![filebase_6](assets/filebase_6.png)
+* **{NFT_NUMBER}** = This is the number/tokenID of this particular NFT. In this exmaple, it is 4. ***Note that unlike the other fields, this one DOES NOT need "quotes" around it**
+* **attributes** = These are the NFT attributes/traits that appear on various marketplaces *See screenshot below*. They are optional, if you don't want to set any attributes, you can simply delete everything between \[the square brackets\] (but make sure to leave the empty square brackets). You can also add/remove attributes by adding/deleting these blocks:
+```
+        {
+            "trait_type": "{ATTRIBUTE_1}",
+            "value": "{VALUE_1}"
+        },
+```
+You also need to change the values of **{ATTRIBUTE_1}** and **{ATTRIBUTE_2}** to the trait NAME(s) and the **{VALUE_1}** and **{VALUE_2}** to the trait values. 
+
+![opensea_1](assets/opensea_1.png)
+![opensea_2](assets/opensea_2.png)
+
+***So in our example, above, our final json/text file for NFT #2 would like like:***
+```
+{
+    "name": "this is my nft title #2",
+    "description": "This is my nft description",
+    "image": "ipfs://QmNq6VZMD4ErFSc6t7U3eAkTTFpfABg8yQ7pTHQsYo5XGk",
+    "edition": 2,
+    "attributes": [
+        {
+            "trait_type": "Accessories",
+            "value": "Cyborg Peel1"
+        },
+        {
+            "trait_type": "Avril",
+            "value": "Pink"
+        },
+        {
+            "trait_type": "Background",
+            "value": "4"
+        },                             
+    ],
+}
+```
+
+Save the file to something like **avril_#2.json** on your computer (note the *.json* file extension)
+
+6. Repeat step #5 for all the NFTs you have minted. Make sure to change the title, the edition number, THE IMAGE URL, etc. Once you have all you ***.json*** files saved on your local computer, we are ready to upload them to filebase. 
+
+7. On the left-hand menu, click on **Buckets** and then click on your bucket (ghosty-ctr in the screenshots). You should only have one folder in here, called **images**. Create a new folder called **json** and open it (click on it). Upload all the ***.json*** files you created in step #5 and #6 in this folder here.
+
+![filebase_7](assets/filebase_7.png)
+![filebase_8](assets/filebase_8.png)
+
+8. Go to **[Updating the metadata on the contract]()** in order to update the tokenURI on the contract.
+
+##### Updating the metadata on the contract
+Now that our images AND our json/text files (metadata) have been uploaded to IPFS, we need to update our contract to point to them.
+
+1. Go to https://etherscan.io/ (if you are doing this on Goerli testnet, go to https://goerli.etherscan.io/) and go to your contract (address), click on **Contract** and click on **Write Contract**. If you are doing this on testnet, make sure to put your Metamask on Goerli network and click on **Connect to Web3**.
+
+2. Scroll down to function #22 **setTokenURI**, and click on it. For each NFT we have minted on the contract, we will need to call this function to set the tokenURI. Let's start with token/NFT #1. So in this case, we would put ***1*** in the first field *tokenId*. For the second field, the *_tokenURI* we need the CID value of our json/text file we uploaded to Filebase earlier. You can get it by going to **Buckets**, clicking on your bucket, then clicking on the *json* folder. In there, you need to copy the **CID** of the json/text file that represents NFT #1 in your collection. And for the value of *_tokenURI* on etherscan, we put ***ipfs://{CID}***, for example:
+```
+ipfs://QmY9pYwjLC1isrmR6P3xMmswwB9dWCLaVCE9Xyrq1gdoy6/
+```
+
+![filebase_9](assets/filebase_9.png)
+![etherscan_7](assets/etherscan_7.png)
+
+3. Repeat step #2 for each NFT you minted. Make sure to copy the correct ***CID*** from filebase, the one that corresponds to the NFT you are doing.
+
+4. Once set, you can confirm the **tokenURI** is correct by switching to **Read Contract** (on etherscan). Scroll down to function #29 *tokenURI* and click on it. Put **1** in the *tokenId* field and click on **Query**. This should return the **ipfs://{CID}** link that you set specifically for NFT #1. 
+
+![etherscan_8](assets/etherscan_8.png)
+![etherscan_9](assets/etherscan_9.png)
+
+
+## ANNEX
+### NFT description Markdown.
