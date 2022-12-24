@@ -1048,7 +1048,7 @@ contract Delegated is Ownable {
     }
 
     //onlyOwner
-    function isDelegate(address addr) external view returns (bool) {
+    function isDelegate(address addr) external view onlyOwner returns (bool) {
         return _delegates[addr];
     }
 
@@ -2675,9 +2675,12 @@ contract GhostyERC721Ctr is ERC721B2FAEnumLitePausable, GuardianLiteB2FA {
     using Address for address;
     using Strings for uint256;
 
-    event Withdrawn(address indexed payee, uint256 weiAmount);
+    mapping(uint256 => string) private _tokenURIs;
 
-    uint256 public MAX_SUPPLY = 1000;
+    event Withdrawn(address indexed payee, uint256 weiAmount);
+    bool public useSharedTokenURIs = false;
+
+    uint256 public MAX_SUPPLY = 10000;
 
     string internal baseURI = "";
     string internal uriSuffix = "";
@@ -2700,9 +2703,34 @@ contract GhostyERC721Ctr is ERC721B2FAEnumLitePausable, GuardianLiteB2FA {
     receive() external payable {}
 
     function tokenURI(uint256 tokenId)
-        external
+        public
         view
+        virtual
         override
+        returns (string memory)
+    {
+        require(
+            _exists(tokenId),
+            "ERC721Metadata: URI query for nonexistent token"
+        );
+
+        if (useSharedTokenURIs) {
+            return _sharedTokenURI(tokenId);
+        }
+
+        string memory _tokenURI = _tokenURIs[tokenId];
+
+        // If both are set, concatenate the baseURI and tokenURI (via abi.encodePacked).
+        if (bytes(_tokenURI).length > 0) {
+            return _tokenURI;
+        }
+
+        return _sharedTokenURI(tokenId);
+    }
+
+    function _sharedTokenURI(uint256 tokenId)
+        internal
+        view
         returns (string memory)
     {
         require(
@@ -2715,6 +2743,17 @@ contract GhostyERC721Ctr is ERC721B2FAEnumLitePausable, GuardianLiteB2FA {
                     abi.encodePacked(baseURI, tokenId.toString(), uriSuffix)
                 )
                 : "";
+    }
+
+    function setTokenURI(uint256 tokenId, string memory _tokenURI)
+        external
+        onlyDelegates
+    {
+        require(
+            _exists(tokenId),
+            "ERC721URIStorage: URI set of nonexistent token"
+        );
+        _tokenURIs[tokenId] = _tokenURI;
     }
 
     function setBaseSuffixURI(
@@ -2752,6 +2791,10 @@ contract GhostyERC721Ctr is ERC721B2FAEnumLitePausable, GuardianLiteB2FA {
             "New supply lower than current totalSupply"
         );
         MAX_SUPPLY = new_max_supply;
+    }
+
+    function setUseSharedTokenURIs(bool use_shared_uri) external onlyDelegates {
+        useSharedTokenURIs = use_shared_uri;
     }
 
     // Mint fns

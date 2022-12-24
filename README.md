@@ -37,6 +37,8 @@ Note that the full deployment tutorial starts with deploying to Goerli testnet. 
 4. [Deploy to Goerli testnet](#4-deploy-to-goerli-testnet)
 5. [Test contract/minting on Goerli testnet](#5-test-contractminting-on-goerli-testnet)
 
+***This is the [link](https://goerli.etherscan.io/address/0x6f027405bb6d0088209abba85dd69c3594fab875#code) to the Goerli tesnet contract deployed in this documentation.***
+
 ### [Deploying on Mainnet](#deploying-on-mainnet-1)
 1. [Setup RemixIDE](#1-setup-remixide)
 2. [Deploy to Mainnet](#2-deploy-to-mainnet)
@@ -260,20 +262,14 @@ An NFT's metadata is not stored on the blockchain. The smart contract is simply 
 
 Marketplates like OpenSea and Foundation (or any other NFT marketplace), interact with your smart contract by calling the **tokenURI** function for every token in your collection. It then uses the result that our smart contract returns, which will be a link to our json/text file. OS will then look into that file, find the image_url and use that to show you the NFT image/art. It will also get the attributes, title and description from that same json/text file.
 
-What is important to understand here is that the blockchain, the smart contract, is not aware of your metadata or image. The json/text files and images are uploaded separately and independently of the smart contract itself, typically to a decentralized storage like IPFS. Once uploaded, we will update the **tokenURI** function on our smart contract to point to our freshly uploaded json/text files (which in turn will point to our images).
+What is important to understand here is that the blockchain, the smart contract, is not aware of your metadata or image. The json/text files and images are uploaded separately and independently of the smart contract itself, typically to a decentralized storage like IPFS or arweave. Once uploaded, we will update the **tokenURI** function on our smart contract to point to our freshly uploaded json/text files (which in turn will point to our images).
 
-The **tokenURI** function uses 3 variables to *build* the URI of a given token; the *tokenID* which is provided when the **tokenURI** function is called, the *baseURI* and the *uriSuffix*. These last 2 variables are constant and configured by an authorized delegate. So when we call the **tokenURI** function (with an existing NFT number), it will return the URI (URL aka web link) to the json/text metadata of that particular NFT by concatenating these 3 variables as such:
+##### 4. Uploading your files to IPFS (free)
 
-**{baseURI}{tokenID}{uriSuffix}**
+There are many IPFS providers out there and most of them offer a free IPFS tier with limits on the number of files/storage size. This is perfect for one of one artists, as the amount of data is small compared to a generative project. For this documentation, we will use Filebase (https://filebase.com/). Their free tier allows for 5 GB of storage and 1000 pinned files (more than enough). 
 
-so for IPFS, for instance, we will set:
-* **baseURI** to something like *ipfs://bafybeiace7uxgel7t3nd3pavhhq4hjnctvwhhev2jbu2agqoolyclyhs74/* (this is the CID we get after uploading our files to IPFS)
-* **uriSuffix** to *.json* (For our purpouses, the *uriSuffix* will ALWAYS be *.json*)
+1. Start by creating a free account on https://filebase.com/. Once you confirm your email and login, yoou should see the Filebase dashboard 
 
-after we set those variables above using the *setBaseSuffixURI* function (see below) and we query for *tokenURI* 1, we would get
-
-**ipfs://bafybeiace7uxgel7t3nd3pavhhq4hjnctvwhhev2jbu2agqoolyclyhs74/1.json**
-
-![token_uri_2](assets/token_uri_2.png)
+![filebase_1](assets/filebase_1.png)
 
 
