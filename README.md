@@ -9,9 +9,9 @@ If you have questions, comments, feedback, don't hesitate to DM me on twiter.
 
 ## Why?
 
-The motivation behind is project is to offer NFT creators/artists an alternative solution for their smart contract deployment. Instead of minting your NFTs on some markeplace contract you do not own or using other solutions like manifold that are more limited in terms of features, I am providing my **GhostyERC721Ctr.sol** contract for anyone who would like to use it. 
+The motivation behind is project is to offer NFT creators/artists an alternative solution for their smart contract deployment. Instead of minting your NFTs on some marketplace contract you do not own or using other solutions like manifold that are more limited in terms of features, I am providing my **GhostyERC721Ctr.sol** contract for anyone who would like to use it. 
 
-The tradeoff is complexity. Going this way is a bit more complicated than using manifold or lazy minting, BUT I believe it is worth it (see list of features below). The good news is, I have provided a very detailed guide below, as well as video demos. If you read it all, you will likely get a better understanding of how smart contracts work and will be able to easily deploy and interact with your own contract. Once you understand the process, you can easily deploy as many contracts/collections as you want.
+The trade off is complexity. Going this way is a bit more complicated than using manifold or lazy minting, BUT I believe it is worth it (see list of features below). The good news is, I have provided a very detailed guide below, as well as video demos. If you read it all, you will likely get a better understanding of how smart contracts work and will be able to easily deploy and interact with your own contract. Once you understand the process, you can quickly re-produce it and deploy as many collections as you want.
 
 ## Features
 
