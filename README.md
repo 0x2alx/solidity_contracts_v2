@@ -1,7 +1,7 @@
 # Ghosty Contracts
 
 # ERC721
-This is a collection of solidity NFT smart contracts by [@ghooost0x2a](https://twitter.com/ghooost0x2a).
+This is a solidity NFT smart contract and guide to deploy and configure it.
 
 *For now, only ERC721 contract is provided. ERC1155 might be added in the future.*
 
@@ -83,11 +83,11 @@ In metamask Settings > Advanced, enable **Show test networks**
 #### 3. Setup RemixIDE 
 RemixIDE is an online solidity development platform. It has all the necessary features to easily compile and deploy smart contracts, verify them, interact with them, etc.
 
-1. Open this page in a new tab, **https://github.com/ghooost0x2a/ghosty_contracts**, click on **Code** and **Download as ZIP**
+1. Open this page in a new tab, **https://github.com/0x2alx/solidity_contracts_v2**, click on **Code** and **Download as ZIP**
 
 ![github_download](assets/github_download.png)
 
-2. Unzip the **ghosty_contracts-main.zip** file you just downloaded. You should end up with a folder containing all the files.
+2. Unzip the **solidity_contracts_v2-main.zip** file you just downloaded. You should end up with a folder containing all the files.
 
 ![unzip_folder](assets/unzipped_folder.png)
 
